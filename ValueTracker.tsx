@@ -1,0 +1,16 @@
+import React, { useRef, useEffect  } from 'react';
+
+function ValueTracker ({value}: {value: number }){
+    const prevValue = useRef <number>();
+
+    useEffect (()=>{
+     if(prevValue.current !== undefined && prevValue.current!== value){
+        console.log(`changed from ${ prevValue.current  } to $ { value } `);
+     }
+     prevValue .current = value;
+    }, [value]);
+
+    return<div>{value}</div>
+}
+
+export default ValueTracker;
